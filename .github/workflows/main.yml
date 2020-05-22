@@ -31,7 +31,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get upgrade -y
-        ./compile-libks.sh
-        ./compile-signalwire-c.sh
-        ./compile-freeswitch.sh
-        ./upload_packages_s3.sh
+        bash ./compile-libks.sh
+        bash ./compile-signalwire-c.sh
+        bash ./compile-freeswitch.sh
+        bash ./upload_packages_s3.sh
