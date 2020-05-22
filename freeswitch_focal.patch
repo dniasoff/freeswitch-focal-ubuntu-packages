@@ -1,0 +1,75 @@
+diff --git a/debian/bootstrap.sh b/debian/bootstrap.sh
+index a19eb27281..328aa92636 100755
+--- a/debian/bootstrap.sh
++++ b/debian/bootstrap.sh
+@@ -2,7 +2,7 @@
+ ##### -*- mode:shell-script; indent-tabs-mode:nil; sh-basic-offset:2 -*-
+ ##### Author: Travis Cross <tc@traviscross.com>
+ 
+-codename="sid"
++codename="focal"
+ modulelist_opt=""
+ modules_add=""
+ use_sysvinit=""
+@@ -19,7 +19,7 @@ shift $(($OPTIND-1))
+ 
+ if [ x${use_sysvinit} = x ]; then
+     case "$codename" in
+-      wheezy|trusty|utopic|xenial) use_sysvinit="true";;
++      wheezy|trusty|utopic|xenial|focal) use_sysvinit="true";;
+       *) use_sysvinit="false";;
+     esac
+ fi
+@@ -30,7 +30,7 @@ lang_dir="../conf/vanilla/lang"
+ fs_description="FreeSWITCH is a scalable open source cross-platform telephony platform designed to route and interconnect popular communication protocols using audio, video, text or any other form of media."
+ mod_build_depends="." mod_depends="." mod_recommends="." mod_suggests="."
+ supported_debian_distros="wheezy jessie stretch buster sid"
+-supported_ubuntu_distros="trusty utopic xenial"
++supported_ubuntu_distros="trusty utopic xenial focal"
+ supported_distros="$supported_debian_distros $supported_ubuntu_distros"
+ avoid_mods=(
+   applications/mod_sms_flowroute
+@@ -97,6 +97,34 @@ avoid_mods_xenial=(
+   asr_tts/mod_flite
+   loggers/mod_raven
+ )
++avoid_mods_focal=(
++  languages/mod_v8
++  codecs/mod_silk
++  codecs/mod_ilbc
++  event_handlers/mod_ldap
++  event_handlers/mod_amqp
++  asr_tts/mod_flite
++  loggers/mod_raven
++  applications/mod_avmd
++  codecs/mod_bv
++  event_handlers/mod_amqp
++  languages/mod_java
++  languages/mod_managed
++  applications/mod_av
++  applications/mod_cv
++  applications/mod_hiredis
++  formats/mod_shout
++  applications/mod_sonar
++  applications/mod_soundtouch
++  formats/mod_vlc
++  codecs/mod_codec2
++  event_handlers/mod_cdr_mongodb
++  event_handlers/mod_erlang_event
++  languages/mod_perl
++  event_handlers/mod_rayo
++  event_handlers/mod_snmp
++  applications/mod_snom
++)
+ manual_pkgs=(
+ freeswitch-all
+ freeswitch
+@@ -325,7 +353,7 @@ Build-Depends:
+ # configure options
+  libssl1.0-dev | libssl-dev, unixodbc-dev, libpq-dev,
+  libncurses5-dev, libjpeg62-turbo-dev | libjpeg-turbo8-dev | libjpeg62-dev | libjpeg8-dev,
+- python-dev, python-all-dev, python-support (>= 0.90) | dh-python, erlang-dev, libtpl-dev (>= 1.5),
++ python-dev, python-support (>= 0.90) | dh-python, erlang-dev, libtpl-dev (>= 1.5),
+ # documentation
+  doxygen,
+ # for APR (not essential for build)
