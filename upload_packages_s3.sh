@@ -24,7 +24,7 @@ cat aptly.conf.template | envsubst > ~/.aptly.conf
 
 aptly repo create -distribution=focal -component=freeswitch release
 aptly repo add release .packages/*.deb
-aptly publish --force-overwrite -passphrase=$GPG_PASSPHRASE repo release  s3:$APTLY_REPO_NAME:
+aptly publish -batch -force-overwrite -passphrase=$GPG_PASSPHRASE repo release  s3:$APTLY_REPO_NAME:
 
 
 
