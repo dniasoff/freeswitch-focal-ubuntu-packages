@@ -10,7 +10,7 @@ cd libks
 cmake .
 cmake build .
 cpack
-sudo  dpkg -i libks_*.deb
+sudo  dpkg -i --force-all libks_*.deb
 
 mkdir -p ../.packages
 mv *.deb ../.packages

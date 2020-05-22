@@ -11,7 +11,7 @@ cd freeswitch_build
 git clone https://github.com/signalwire/freeswitch.git -b v1.10
 cd freeswitch
 git config pull.rebase true
-patch -p1 < ../freeswitch_focal.patch
+patch -p1 < ../../freeswitch_focal.patch
 cd debian
 ./bootstrap.sh
 cd ..

@@ -9,7 +9,7 @@ cd signalwire-c
 cmake .
 cmake build .
 cpack
-sudo dpkg -i signalwire-client-c_*.deb
+sudo dpkg -i --force-all signalwire-client-c_*.deb
 
 mkdir -p ../.packages
 mv *.deb ../.packages
