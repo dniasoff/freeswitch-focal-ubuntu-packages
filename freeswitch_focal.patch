@@ -1,5 +1,5 @@
 diff --git a/debian/bootstrap.sh b/debian/bootstrap.sh
-index a19eb27281..328aa92636 100755
+index a19eb27281..755ad3ab25 100755
 --- a/debian/bootstrap.sh
 +++ b/debian/bootstrap.sh
 @@ -2,7 +2,7 @@
@@ -29,7 +29,15 @@ index a19eb27281..328aa92636 100755
  supported_distros="$supported_debian_distros $supported_ubuntu_distros"
  avoid_mods=(
    applications/mod_sms_flowroute
-@@ -97,6 +97,34 @@ avoid_mods_xenial=(
+@@ -75,7 +75,6 @@ avoid_mods_wheezy=(
+   event_handlers/mod_amqp
+   languages/mod_java
+   languages/mod_managed
+-  applications/mod_av
+   applications/mod_cv
+   applications/mod_hiredis
+   formats/mod_shout
+@@ -97,6 +96,32 @@ avoid_mods_xenial=(
    asr_tts/mod_flite
    loggers/mod_raven
  )
@@ -46,7 +54,6 @@ index a19eb27281..328aa92636 100755
 +  event_handlers/mod_amqp
 +  languages/mod_java
 +  languages/mod_managed
-+  applications/mod_av
 +  applications/mod_cv
 +  applications/mod_hiredis
 +  formats/mod_shout
@@ -58,13 +65,12 @@ index a19eb27281..328aa92636 100755
 +  event_handlers/mod_erlang_event
 +  languages/mod_perl
 +  event_handlers/mod_rayo
-+  event_handlers/mod_snmp
 +  applications/mod_snom
 +)
  manual_pkgs=(
  freeswitch-all
  freeswitch
-@@ -325,7 +353,7 @@ Build-Depends:
+@@ -325,7 +350,7 @@ Build-Depends:
  # configure options
   libssl1.0-dev | libssl-dev, unixodbc-dev, libpq-dev,
   libncurses5-dev, libjpeg62-turbo-dev | libjpeg-turbo8-dev | libjpeg62-dev | libjpeg8-dev,
@@ -73,3 +79,16 @@ index a19eb27281..328aa92636 100755
  # documentation
   doxygen,
  # for APR (not essential for build)
+diff --git a/debian/rules b/debian/rules
+index 3cdf7b4ff3..5d95ca1b58 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -9,7 +9,7 @@ export V=1
+ FS_CC?=gcc
+ FS_CXX?=g++
+ FS_CPPFLAGS?=-D_FORTIFY_SOURCE=2
+-FS_CFLAGS?=-g3 -O2 -fPIC -fstack-protector --param=ssp-buffer-size=4
++FS_CFLAGS?=-g3 -O2 -fPIC -fstack-protector --param=ssp-buffer-size=4 -Wno-stringop-truncation -Wno-stringop-overflow
+ FS_CXXFLAGS?=$(FS_CFLAGS)
+ FS_LDFLAGS?=-Wl,-z,relro
+ export PATH?=/usr/lib/ccache:/usr/sbin:/usr/bin:/sbin:/bin
