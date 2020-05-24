@@ -1,10 +1,6 @@
 #!/usr/bin/bash
 
 
-export PACKAGE_RELEASE=1
-source /etc/profile
-source ~/.bashrc
-
 mkdir freeswitch_build
 cd freeswitch_build
 
