@@ -2,6 +2,8 @@
 
 export PACKAGE_RELEASE=1
 
+set -e
+
 git clone https://github.com/signalwire/libks.git
 cd libks
 cmake .

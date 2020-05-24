@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+set -e
 
 mkdir freeswitch_build
 cd freeswitch_build

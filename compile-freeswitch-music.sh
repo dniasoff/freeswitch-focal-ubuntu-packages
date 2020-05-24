@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+set -e
 
 mkdir freeswitch-music_build
 cd freeswitch-music_build
