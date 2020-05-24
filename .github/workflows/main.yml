@@ -36,4 +36,4 @@ jobs:
         ./compile-freeswitch.sh
         ./compile-freeswitch-sounds.sh
         ./compile-freeswitch-music.sh
-	./upload_packages_s3.sh
+        ./upload_packages_s3.sh
